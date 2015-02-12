@@ -1,0 +1,130 @@
+
+\section{Föreläsning 2}
+
+\subsection{Repetition av senast}
+En \textit{filtration} över
+en monoid $(M, *, 1_M)$, en total ordning $<$ på $M$
+som uppfyller $1_M < x, x < y \Lra ax < ay$.
+och en abelsk grupp $A$
+är en $M$-indexerad familj
+$(F_m(A))_{m\in M}$ av delgrupper som uppfyller
+$F_x(A) \subseteq F_y(A)$ för $x < y$.
+
+Om vi filtrerar en \textit{ring}
+(ringar är alltid icke-kommutativa med identitet)
+ska ring-multiplikationen vara kompatibel med 
+filtrationen:
+$a\in F_x(R), b\in F_y(R) \Lra ab \in F_{xy}(R)$.
+
+\smallLine
+
+En $M$-\textit{gradering} av $A$ är en familj 
+över monoiden
+$(A_m)_{m\in M}$
+av delgrupper till $A$ sådan att 
+$\bigoplus_{m\in M} A_m = A$.
+
+\smallLine
+En gradering av en ring $R$ är dessutom 
+kompatibel med multiplikationen: 
+$x\in R_a, y \in R_b \Lra xy \in R_{ab}$.
+
+\smallLine
+
+Vid en $M$-filtrering av $A$ definierar vi också
+$F_{<1_M} = \{0_A\}$ och 
+$F_{<x} = \bigcup_{y<x}F_y(A)$.
+
+Till ett $M$-filtrerat objekt $A$ associerar vi 
+det \textit{graderade associerade} objektet
+\[gr(A) = \bigoplus_{m\in M} gr(A)_m\]
+där 
+\[gr(A)_m = F_{m}(A) / F_{<m}(A)\]
+
+\subsection{Exempel}
+Låt $R = k[x_1,\ldots, x_n]$ - en ring.
+Litet $k$ betecknar här alltid en 
+kommutativ kropp.
+Låt $M = [x_1, \ldots, x_n]$ - notation
+för den fria kommutativa monoiden som är 
+genererad av $x_1, \ldots, x_n$,
+dvs alla moniska monom. Ta
+$<_{lex}$ - lexikografisk ordning. Det är en
+monoidordning på $M$.
+
+
+Låt t.ex $f = 3x^3 x_2^4 x_3^3x_4^8 - 7x_1^2x_2^{12}$.
+Vi har $f \in F_{x_1^4}(R)$ för att \ldots
+
+\subsection{Nytt}
+Om $R$ är en $M$-filtrerad ring, $L = {\ }_RL$ är en vänster-modul
+över $R$ och $L$ har en $M$-filtrering
+$(F_m(L))_M$, så är $L$ en \textit{filtrerad $R$-modul} om
+$a\in F_x(R), b\in F_y(M) \Lra ab\in F_{xy}(M)$.
+
+Graderade moduler över graderade ringar funkar likadant.
+
+\subsection{Graderade ringar är ringar}
+Om $R$ är en ring, så är en $M$-gradering $gr(R)$ också en ring.
+Låt $\ol{a}\in gr(R)_x, \ol{b}\in gr(R)_y$. Då är 
+$a\in F_x, b\in F_y$ och $ab\in F_{xy}$.
+Vi definierar $\ol{a}\cdot \ol{b}$ som 
+$\ol{ab}$. Det blir väldefinierat:
+antag att $\ol{a'} = \ol{a}, \ol{b'} = \ol{b}$.
+Då måste $a'-a\in F_{<x}(R), b'-b\in F_{<y}(R)$, så
+det finns $x', y'$ med $a'-a\in F_{x'}(R), b'-b\in F_{y'}(R)$
+och $x'<y, y'<y$.
+Vi har att $ab - a'b' = (a-a')b + a'(b-b') \in F_{x'y} + F_{xy'}(R)
+\subseteq F_{<xy}$ och därför är $\ol{ab} = \ol{a'b'}\in gr(R)_{xy}$.
+
+Man kan fortsätta att visa att $gr(R)$ är distributiv och associativ.
+
+\subsection{Gradera och sedan filtrera}
+Om $R = \bigoplus_{m\in M} R_m$ är $M$-graderad så inducerar detta
+en $M$-filtration 
+$F_m(R) = \bigoplus_{x\leq m} R_x$.
+Det ger en isomorfi av graderade ringar $R \lra gr(R)$.
+
+
+\subsection{Icketrivialt exempel}
+Betrakta ringen $A = \mathbb{R}\left[x, \partt\right]$
+av differentialoperatorer på $C_{\infty}(\mathbb{R})$.
+Operatorerna opererar på funktioner $f$ genom
+$p(x)\bullet f = p(x)\cdot f$, 
+$\partt \bullet f = f'$.
+Multiplikation i $A$ är funktionssammansätting
+som funktioner $C_{\infty} \lra C_{\infty}$.
+
+T.ex är $x\cdot \partt^2 x + 2\partt$
+operatorn som gör 
+$f \mapsto x\cdot \partt^2 x \bullet f + 2\partt(f)$
+och $x\cdot \partt^2 x \bullet f = x\cdot(\partt^2 (x\cdot f))$.
+
+Vi har 
+$(\partt x - x \partt) f = \partt (xf) - x(\partt f) = 
+1\cdot f + x\cdot f' - xf' = f$,
+så \redBox{$\partt x - x \partt = 1$}.
+
+Man kan bevisa att det inte finns några andra villkor, dvs att
+$A\cong \frac{\mathbb{R}<x,y>}{(yx-xy-1)}$ som ickekommutativa ringar.
+($\partt \mapsto y$).
+
+Här är $(yx-xy-1)$ ett tvåsidigt ideal (ringarna är inte kommutativa!)
+och $<x,y>$ - den fria monoiden på $x, y$ (ord av $x,y$ om sammansättning
+som multiplikation).
+
+Vi kan ordna $[x, y]$ (den \textit{kommutativa} monoiden, inte $<x,y>$) 
+lexikografiskt med $x<y$. Vi har en \textit{kommutativisering}
+$\mathbf{R}<x,y> \lra \mathbf{R}[x,y]$ (dividera med tvåsidiga
+principala idealet $(xy-yx)$). Detta ger en $[x,y]$-filtrering
+på $\mathbf{R}<x,y>$. T.ex. är 
+$xyx^5y^2\in (\mathbf{R}<x,y>)_{x^6y^3}$. 
+
+Denna filtrering av $\mathbf{R}<x,y>$ inducerar en filtrering av $A$:
+ta kvotavbildningen $f: A\lra \mathbf{R}<x,y>$.
+låt $A_m = f^{-1}((\mathbf{R}<x,y>)_m)$.
+
+Nu får vi $gr A \cong \mathbf{R}[x,y]$
+för att graderingen är över monoiden $[x, y]$ (som är kommutativ
+och glömmer bort strukturen hos $A$)
+
