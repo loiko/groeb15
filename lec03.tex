@@ -1,0 +1,162 @@
+\textit{Note:} the non-commutative algebra
+$\mathbb{K}<x,y>/(yx-xy-1)$ is called the \textit{Weyl} algebra.
+
+\section{Free presentations of modules}
+Let $A$ be a ring and $M = {}_AM$ - a left $A$-module.
+$A$ free presentation of $M$ is an exact sequence
+\begin{equation}\label{eqn:exact-sequence}
+F_1 \lra^{d_1} F_0 \lra^{\pi} \lra M \lra 0
+\end{equation}
+with $F_0, F_1$ - free left $A$-modules.
+
+Let's make sense of this definition:
+Assume $F_0 = \bigoplus_{i\in I_0}{}_A^A$.
+Let $\{\delta_i\}_{i\in I_0}$ be a basis for $F_0$.
+Then $\{\pi(\delta_i)\}_{i\in I_0}$ generate
+$M$ because $\pi$ is surjective.
+$d_1$ and the elements in $F_1$ determine the 
+\textit{relations} between generators $\delta_i$ of $M$.
+If $x\in M$, then by surjectivity, there is 
+$\sum_{i\in I_0} y_i \delta_i \in F_0$ with
+$x = \sum_{i\in I_0} y_i \pi(\delta_i)$
+(all but many elements in the sum are $0$).
+
+By definition of an exact sequence, the image of $\delta_1$
+is the kernel of $\pi$, so any relation 
+$\sum_{i\in I_0} (a_i \pi(\delta_i)) = 0 $ in $M$
+satisfies $\sum_{i\in I_0} a_i \delta_i = d_1(x)$
+for some $x\in F_1$.
+$x$ can be written as $x = \sum_{i\in I_1} b_i \eta_i$.
+A basis $\{\eta_i\}_{i\in I_1}$
+for $F_1$ gives a \textit{basis for the relations in $M$}.
+The relations are called \textbf{syzygies}.
+
+\subsection{Example of free presentation}
+Let $A = \mathbb{Q}[x, y]$, $M = (x^4-y^2-1, x^2+y)$
+is an $A$-module (every ideal is a module). Since there
+are two generators, a presentation can begin like this:
+
+\begin{eqnarray*}
+    A \oplus A & \lra^\pi & M \lra 0\\
+    (1, 0) & \mapsto & x^4-y^2-1 := f_1\\
+    (0, 1) & \mapsto & x^2+y := f_2
+\end{eqnarray*}
+
+A possible relation between $f_1, f_2$ is 
+$f_1f_2 - f_2f_1=0$. So $\pi(f_2, -f_1) = 0$.
+
+Since $f_1 - (x^2-y)f_2 = -1$, we see that
+$M = A = (1)$, so $(x, y)$ is a simpler 
+set of generators. The only relations for $(x, y)$
+is then $xy-yx=0$, which correspond
+to a $1$-dimensional set $F_1$.
+
+\section{More abstract theory}
+If $A$ is $G$-filtered and ${}_AM$ is a $G$-filtered $A$-module,
+we look for \textit{filtered} presentations
+$F_1 \lra^{d_1} F_0 \lra^{\pi} M \lra 0$.
+A \textit{filtered free presentation} is one where
+the morphisms are filtered:
+$d_1(F_g(F_1)) \subseteq F_g(F_0)$.
+
+\textbf{Grading} is a functor from the category \textbf{Filt}
+of $G$-filtered $A$-modules to the category
+\textbf{Gr} of $G$-graded $A$ modules.
+
+An object ($G$-filtered $A$-module) is mapped
+to its associated graded object.
+A filtered morphism $f: M\lra N$ is turned to
+a morphism $gr(f) : gr(M)\lra gr(N)$.
+
+The sequence
+\begin{equation}\label{eqn:gr-sequence}
+gr(F_1) \lra^{gr(d_1)} gr(F_0) \lra^{gr(\pi)} gr(M) \lra 0
+\end{equation}
+needs not (see example (\ref{ssec:example-sequence-not-good}))
+be exact.
+
+\begin{Definition}
+    (\ref{eqn:exact-sequence}) is \textit{good} if 
+    (\ref{eqn:gr-sequence}) is exact.
+\end{Definition}
+
+\begin{Definition}
+    A generating family $(f_i){i\in I}$ of $M$ is called
+    a \textit{standard basis}, if there is a filtration
+    on $F_0 = \bigoplus_{i\in I}{}_AA$, such that 
+    $\pi: F_0 \lra M \lra 0$ mapping $\delta_i \mapsto f_i$
+    is a \textit{good filtered sequence}.
+    \end{Definition}
+
+\subsection{Example - exact sequences that are not good}
+\label{ssec:example-sequence-not-good}
+$k$ is any field. $A = k[x,y,z]$. The natural numbers 
+$\mathbb{N}$ are graded and $A$ is given an 
+$\mathbb{N}$-filtration by 
+$F_n(A) = \{p \in A : \deg p \leq n\}$.
+Let $M=(f_1, f_2) := (xz-1, x^3-y^3)$. 
+Is $(f_1, f_2)$ a standard basis of $M$?
+
+What kind of filtration should $F_0 = A\oplus A$ have?
+We have as earlier $F_0 = A\delta_1 \oplus A\delta_2$
+with $\pi(\delta_i) = f_i$. What grade should 
+$\delta_1, \delta_2$ have in $F_0$?
+
+The only way to make the graded map work is 
+$\delta_1 \in F_2(F_0), \delta_1\not\in F_2(F_0)$.
+Similarly $\delta_3 \in F_3(F_0) \setminus F_2(F_0)$.
+This induces a filtration of $F_0$.
+
+We have $x^2f_1 - zf_2 = y^2z - x^2 := f_3$,
+which must have both grade $3$ and $4$ if 
+$(f_1, f_2)$ were a \textit{standard basis}.
+It turns out that 
+$(f_1, f_2, f_3)$ is \todo{Why is that?} one.
+
+$(f_1, f_2, f_3)$ - standard basis implies
+\begin{eqnarray*}
+A\oplus A\oplus A \lra M \lra 0\\
+(a_1, a_2, a_3) \mapsto a_1 f_1 + a_2 f_2 + a_3 f_3
+\end{eqnarray*}
+
+\subsubsection{Exercise:}
+Prove that $xz, x^3, y^2z$ generate $M$.
+
+\section{Comparsion between different filtrations}
+Let $G, H$ be two ordered monoids with
+$\phi: G\lra H$ - a morphism between ordeded monoids.
+This translates into a relation between the orders
+of $G$ and $H$:
+\[
+    a \leq_G b \lra \phi(a) \leq_H \phi(b)
+\]
+
+\textbf{Example:} the degree lexicographic order
+on $[x, y, z]$: 
+$x^{a_1}y^{b_1}z^{c_1} > x^{a_2}y^{b_2}z^{c_2}$
+if 
+\begin{itemize}
+\item $a_1 + b_1 + c_1 > a_2 + b_2 + c_2$ OR
+\item $a_1 + b_1 + c_1 > a_2 + b_2 + c_2$ AND 
+    $a_1 > a_2$ OR
+\item $a_1 + b_1 + c_1 > a_2 + b_2 + c_2$ AND 
+    $a_1 = a_2$ AND $ b_1 > b_2$.
+\end{itemize}
+Then  $[x,y,z] \lra \mathbb{N}$,
+    $x^ay^bz^c \mapsto a+b+c$ is a morphism
+    between ordered monoids.
+
+A morphism $\phi : G\lra H$ of ordered monoids
+induces an $H$-filtration on a $G$-filtered
+object $A$:
+\[
+F_x^H(A) = \bigcup_{\phi(y) \leq x} F_y^G(A)
+\]
+This makes it possible to construct two graded associated
+objects. 
+Taking a coarser grading first and a finer
+grading later, this is the same 
+as taking the finer filtration directly
+$gr^{(G)}\left( 
+    gr^{(H)}(A)
+\right) \cong gr^{(G)}(A)$ \todo{exercise! Hand in!}

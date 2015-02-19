@@ -4,6 +4,7 @@ SRC = main.tex lec*.tex
 
 groebner_lecture_notes.pdf: $(SRC)
 	pdflatex -shell-escape main.tex
+	pdflatex -shell-escape main.tex
 	mv main.pdf groebner_lecture_notes.pdf
 	make clean_aux
 
